@@ -1,0 +1,31 @@
+<div id="example23_wrapper" class="dataTables_wrapper">
+
+    <table id="example23" class="display nowrap table table-hover table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+        <thead>
+            <tr role="row">
+                <th class="sorting_asc" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 72px;">Favorito</th>
+                <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 72px;">#</th>
+                <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 300px;">Name</th>
+                <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 300px;">Price</th>
+
+            </tr>
+        </thead>
+
+        <img *ngIf="loading" src="../../../assets/images/Dual Ring-2s-200px.gif" alt="">
+
+        <tbody class="animated fadeIn">
+            <tr *ngFor="let record of records  | paginate: config ; let i = index" role="row" class="odd">
+                <td (click)="record.favorito = !record.favorito" class="sorting_1">
+                    <i [class]="record.favorito ? 'far fa-star star' : 'far fa-star'"></i>
+                </td>
+                <td>{{ i + 1 }}</td>
+                <td>{{ record.name}} - {{ record.symbol }}</td>
+                <td>$ {{ record.price | dropCero }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+
+</div>

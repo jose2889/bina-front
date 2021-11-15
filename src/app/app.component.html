@@ -1,0 +1,16 @@
+<div id="main-wrapper">
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <h1 class="text-themecolor">{{ 'Crypto currency' | uppercase }}</h1>
+            <hr>
+            <br>
+            <router-outlet></router-outlet>
+        </div>
+        <footer class="footer">
+            © {{ anio }}
+        </footer>
+    </div>
+
+</div>
