@@ -26,4 +26,11 @@ export class PricesService {
               })
             );
   }
+
+  getPriceForAllSymbol(): Observable<any> {
+    return this.http.get(`${ URL_BACKEND }/pricesforsymbolall`)
+            .pipe(
+              map( (resp: any) => resp.data )
+            );
+  }
 }

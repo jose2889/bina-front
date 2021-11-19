@@ -11,18 +11,22 @@ export class SearchComponent implements OnInit {
 
   public records: any[] = [];
   public data$: Observable<any> = of([]);
+  public data2$: Observable<any[]>;
+  public keyword = 'symbol';
 
   constructor( private pricesService: PricesService ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.buscarTodo();
+  }
 
-  buscar(termino: string): void {
-    const termMayus = termino.toUpperCase();
-    this.data$ = this.pricesService.getPriceforASymbol(termMayus);
-      // .subscribe(resp => {
-      //   const data = Object.entries(resp);
-      //   this.records = data;
-      // });
+
+  buscar(event: any): void {
+    this.data$ = this.pricesService.getPriceforASymbol(event.symbol);
+  }
+
+  buscarTodo(): void {
+    this.data2$ = this.pricesService.getPriceForAllSymbol();
   }
 
 }
