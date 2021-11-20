@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col">
+
+        <div class="container">
+            <div class="ng-autocomplete">
+                <ng-autocomplete [data]="data2$ | async" [searchKeyword]="keyword" (selected)='buscar($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" placeholder="Ingrese código">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.symbol"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+        </div>
+
+        <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.symbol"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+        </ng-template>
+
+
+        <div class="card mt-5" *ngFor="let data of data$ | async" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">SYMBOL: {{ data[1].symbol }}</h5>
+                <p class="card-text">BID PRICE: {{ data[1].bidPrice }}</p>
+                <p class="card-text">BID PRICE: {{ data[1].bidQty }}</p>
+                <p class="card-text">BID PRICE: {{ data[1].askPrice }}</p>
+                <p class="card-text">BID PRICE: {{ data[1].askQty }}</p>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary mt-5" routerLink="/">Volver</button>
+    </div>
+</div>
